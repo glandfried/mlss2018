@@ -1,0 +1,37 @@
+\tikz{ %
+        
+        \node[det, fill=black!10] (r) {$r_{ab}$} ; %
+        \node[const, below=of r, yshift=-1.8cm,xshift=-1.7cm] (c_1a) {\footnotesize  $a = \bm{o}_j, b =\bm{o}_{j+1}$};
+        \node[const, below=of c_1a] (c_2a) {\footnotesize  $ 0 \leq j < |\text{A}|$};
+        \node[latent, left=of r] (d) {$d_{ab}$} ; %
+        \node[latent, left=of d] (t) {$t_e$} ; %
+        \node[latent, left=of t] (p) {$p_i$} ; %
+        \node[latent, left=of p, yshift=-1.5cm] (s) {$s_i$} ; %
+        \node[obs, left=of p, yshift=1.5cm] (beta) {$\beta$} ; %
+        \node[obs, left=of s] (mu) {$\widehat{\mu}_i$} ; %
+        \node[obs, left=of s, yshift=2.4cm] (sigma) {$\widehat{\sigma}_i$} ; %
+        
+        
+        \edge {d} {r};
+        \edge {t} {d};
+        \edge {p} {t};
+        \edge {s} {p};
+        \edge {beta} {p};
+	\edge {mu,sigma} {s};
+	
+        \plate {personas} {(p)(s)(beta)(mu)(sigma)} {$i \in \text{A}_e$}; %
+        \plate {equipos} {(personas) (t)} {$ \text{A}_e \in \text{A}$}; %
+	\node[invisible, below=of d, yshift=-2.85cm,xshift=-1cm] (inv_below) {};
+	\node[invisible, above=of r, yshift=1.6cm] (inv_above) {};
+	\plate {comparaciones} {(d) (r) (inv_below) (inv_above)} {}
+	
+	\node[const, right= of r, xshift=1.2cm ,yshift=-3.5cm] (result-dist) {$r_{ab} = d_{ab} > 0$} ; %
+	\node[const, above=of result-dist,yshift=0.3cm] (d-dist) {$d_{ab} = t_a - t_b$};  %
+	\node[const, above=of d-dist,yshift=0.3cm] (t-dist) {$t_e = \sum_{i\in A_e} p_i $} ; %
+	\node[const, above=of t-dist,yshift=0.3cm] (p-dist) {$p_i \sim N(s_i,\beta^2)$} ; %
+	\node[const, above=of p-dist,yshift=0.3cm] (s-dist) {$s_i \sim N(\widehat{\mu}_i,\widehat{\sigma}_i^2)$} ; %
+              
+        }
+        
+        
+        

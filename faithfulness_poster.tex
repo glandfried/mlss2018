@@ -1,0 +1,321 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% a0poster Portrait Poster
+% LaTeX Template
+% Version 1.0 (22/06/13)
+%
+% The a0poster class was created by:
+% Gerlinde Kettl and Matthias Weiser (tex@kettl.de)
+% 
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[a0,portrait]{a0poster}
+%A0 841mm x 1189mm
+\usepackage{multicol} % This is so we can have multiple columns of text side-by-side
+\columnsep=100pt % This is the amount of white space between the columns in the poster
+\columnseprule=3pt % This is the thickness of the black line between the columns in the poster
+
+\usepackage[svgnames]{xcolor} % Specify colors by their 'svgnames', for a full list of all colors available see here: http://www.latextemplates.com/svgnames-colors
+
+%\usepackage{times} % Use the times font
+%\usepackage{palatino} % Uncomment to use the Palatino font
+%\usepackage[sfdefault]{AlegreyaSans}
+\usepackage[sfdefault]{AlegreyaSans}
+
+\usepackage{graphicx} % Required for including images
+\graphicspath{{figures/}} % Location of the graphics files
+\usepackage{booktabs} % Top and bottom rules for table
+\usepackage[labelfont=bf]{caption} % Required for specifying captions to tables and figures
+\usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts, symbols and environments
+\usepackage{wrapfig} % Allows wrapping text around tables and figures
+\usepackage{bm}
+\usepackage{ragged2e}
+\usepackage{float} % para que los gr\'aficos se queden en su lugar con [H]
+\usepackage[subrefformat=parens]{subcaption} % para \begin{subfigure}
+\usepackage{tikz} % Para graficar, por ejemplo bayes networks
+\usepackage{framed}
+\usepackage{mdframed}
+  
+\usepackage[absolute,overlay]{textpos} 
+\setlength{\TPHorizModule}{1cm} %
+\setlength{\TPVertModule}{1cm}	%
+
+
+
+% \usepackage{xr}
+% \externaldocument{supplementary}
+\setlength{\columnseprule}{0pt}
+
+\usetikzlibrary{bayesnet} % Para que ande se necesita copiar el archivo  tikzlibrarybayesnet.code.tex en la misma carpeta
+
+\addtolength{\textwidth}{40pt}
+\addtolength{\oddsidemargin}{-40pt}
+ 
+\begin{document}
+
+\begin{textblock}{100}(18,23.25)
+ \includegraphics[width=0.1\textwidth]{images/dc_color.pdf} 
+ \end{textblock}
+\begin{textblock}{100}(30,24)
+ \includegraphics[width=0.1\textwidth]{images/icc-logo.jpg} 
+ \end{textblock}
+ \begin{textblock}{100}(49,24)
+ \includegraphics[width=0.1\textwidth]{images/logo_licar.pdf} 
+ \end{textblock}
+  \begin{textblock}{100}(61,24)
+ \includegraphics[width=0.1\textwidth]{images/logo_version_02.pdf} 
+ \end{textblock}
+ 
+%----------------------------------------------------------------------------------------
+%	POSTER HEADER 
+%----------------------------------------------------------------------------------------
+
+% The header is divided into two boxes:
+% The first is 75% wide and houses the title, subtitle, names, university/organization and contact information
+% The second is 25% wide and houses a logo for your university/organization or a photo of you
+% The widths of these boxes can be easily edited to accommodate your content as you see fit
+\centering \fontsize{90}{90} \textbf{Faithfulness-boost effect} \\[1cm]  % Title
+\fontsize{70}{85}\textbf{Skill acquisition improved by grouping strategies}\\[2cm] % Subtitle
+\LARGE \textbf{Gustavo Landfried$^{1,2}$, Diego Fern\'andez Slezak$^{1,2}$ and Esteban Mocskos$^{1,3}$}\\[0.5cm] % Author(s)
+\large 1. Universidad de Buenos Aires. Facultad de Ciencias Exactas y Naturales. Departamento de Computaci\'on. Buenos Aires, Argentina \\ % University/organization
+\large 2. CONICET-Universidad de Buenos Aires. Instituto de Investigaci\'on en Ciencias de la Computaci\'on (ICC). Buenos Aires, Argentina \\
+\large 3. CONICET. Centro de Simulaci\'on Computacional p/Aplic Tecnol\'ogicas (CSC). Buenos Aires, Argentina \\ [0cm]
+\Large glandfried@dc.uba.ar
+
+
+ % A bit of extra whitespace between the header and poster content
+\vspace{4cm}
+%----------------------------------------------------------------------------------------
+
+\begin{multicols}{2} % This is how many columns your poster will be broken into, a portrait poster is generally split into 2 columns
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+%However the cultural niche hypothesis argue that it is no the individual cognitive abilities that explain Homo Sapiens adaptive success, but the cultural evolution process that creates the adaptive packages (tools and belief) even beyond the causal understanding of the individuals who use them.
+
+%Humans gradually accumulate information across generations and develop well-adapted tools, beliefs, and practices that are too complex for any single individual to invent during their lifetime even in what seem to be the ``simplest'' foraging societies.
+\large
+
+\section*{Abstract}
+\justify 
+
+%Skill improvement has long been modeled as a function of individual experience.
+In its brief evolutionary history Homo Sapiens has come to occupy a wider range than any other terrestrial vertebrate species.
+Our ability to successfully adapt to such a diverse range of habitats is often explained in terms of our cognitive ability~\cite{pinker2010-cognitiveNiche,newell1981-skillAcquisitionAndLawOfPractice}.
+In contrast, the cultural niche hypothesis~\cite{boyd2011-culturalNiche} suggests that is the cultural evolution process that creates the adaptive packages (tools and beliefs) even beyond the causal understanding of the individuals who use them.
+
+In order to study humans adaptive success, we set to investigate the effects of social learning strategies over skill acquisition.
+We quantify the impact of team play strategies on a online multiplayer game where a variable amount of players can participate in each game, playing individually or in teams.
+\emph{``Faithfulness-boost effect''} provides a skill boost during the first games of experience that would be acquired only after thousands of game played.
+%A tendency to play team games is associated with a long run skill improvement, and a tendency to play with a same teammate significantly accelerates short-run skill acquisition.
+
+
+\section*{The game}
+
+
+% \setlength{\columnsep}{3cm}
+% \begin{multicols}{2}
+Games were downloaded from \emph{ConquerClub}, a free server that offer RISK like games.
+We have 4.4 millions games played between 2006 and 2009. 
+Each turn consists of: i) deploy new troops, ii) assault neighboring opponent's regions, and iii) reinforce regions.
+%The game environment has four relevant elements: map, status, chat and log.
+
+% 
+% \columnbreak
+% \begin{figure}[H]
+%   \vspace{-3.5cm}
+%     \hspace{-1cm}
+%     %\centering
+%     \begin{subfigure}[t]{0.2\textwidth}
+%      \includegraphics[width=\textwidth]{figures/conquerImage}
+%   \end{subfigure}
+%     \label{conquerImage}
+% \end{figure}
+% \end{multicols}
+\vspace{0.5cm}
+\begin{mdframed}[backgroundcolor=gray!15] 
+\vspace{0.5cm}
+\Large \centering
+The \textbf{cultural evolution process} creates the tools and beliefs,
+
+even beyond the understanding of the individuals who use them
+\vspace{0.5cm}
+\end{mdframed}
+
+
+\vspace{-1cm}
+\section*{Results}
+
+%Practice has long been a major topic, studied as the main factor for skill improvement.
+The generalised power law describes all of the practice data~\cite{newell1981-skillAcquisitionAndLawOfPractice}.
+\begin{equation}\label{lawOfPractice}
+   \text{Skill} = \text{Skill}_0 \cdot \text{Experience}^{\alpha}
+\end{equation} 
+
+where $\alpha$ is the learning rate, and Skill$_0$ the skill after the first game.
+%A difference of $4$~tsp (TrueSkill points) between two opponents equate to $\sim2/3$ of winning probability. 
+%To analyse the law of practice, we split players by their total activity.
+%According to the expected, we observe linear log-log learning curves (Fig.~\ref{learningskill_curve}).
+
+\begin{figure}[H]
+    \vspace{0.5cm}
+    \centering
+    \begin{subfigure}[t]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{figures/law_of_practice}
+    \caption{Law of practice}
+    \label{learningskill_curve}
+    \end{subfigure}
+    \ \
+    \begin{subfigure}[t]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{figures/team_oriented_behavior}
+    \caption{Team-oriented behaviour}
+    \label{learningskill_team_hasta4team}
+  \end{subfigure}
+    \caption{\subref{learningskill_curve} Linear log-log learning curve of population of players with different total activity. Learning has a dependence on engagement, revealing lower skill level among players who early churn.\subref{learningskill_team_hasta4team} Learning curve of strong, medium and weak team-oriented behaviour (TOB): 0.8$<$TOB$\leq$1, 0.4$<$TOB$\leq$0.6, and 0$<$TOB$\leq$0.2, respectively. The tendency to play team games is associated with a long run skill improvement.}
+    \label{learning_curve}
+\end{figure}
+
+\vspace{0.5cm}
+\begin{mdframed}[backgroundcolor=gray!15] 
+\Large \centering
+\vspace{0.5cm}
+Grouping strategies provides a \textbf{skill boost} equivalent to \\ \textbf{thousands of games of individual experience}
+\vspace{0.5cm}
+\end{mdframed}
+
+
+\begin{equation}
+\text{Team-oriented behaviour (TOB)} = \frac{\text{Team games played}}{\text{Games played}}
+\end{equation}
+
+\vspace{0.3cm}
+
+\begin{equation}
+\text{Loyalty} = \frac{\text{Maximum of games played with a partner}}{\text{Team games played}}
+\end{equation}
+\vspace{0.3cm}
+\begin{equation}
+\text{Faithfulness} = \text{Loyalty} \cdot \text{TOB} 
+\end{equation}
+
+\vspace{0.6cm}
+
+% To minimise the impact of practice, we compare players with the same number of games played (Fig.~\ref{skillModels_loyaltyTeamOriented_imageEmpirical}). 
+
+We measure the influence of loyalty, TOB and faithfulness interaction at 100 games played using a linear model (Table \ref{model}).
+
+\begin{figure}[H]
+  \vspace{1cm}
+    \centering
+    \begin{subfigure}[t]{0.23\textwidth}
+      \includegraphics[width=\textwidth]{figures/loyalty}
+    \caption{Loyalty}
+    \label{learningskill_pteam89_ployal}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.23\textwidth}
+    \includegraphics[width=\textwidth]{figures/social_learning}
+    \caption{Interaction}
+    \label{skillModels_loyaltyTeamOriented_imageEmpirical}
+  \end{subfigure}
+    \caption{\subref{learningskill_pteam89_ployal} Loyal ($\text{\emph{loyalty}}>0.5$) and casual ($\text{\emph{loyalty}}\leq 0.2$) subclass of strong team-oriented players. The tendency to play with a stable teammate significantly accelerates short-run skill acquisition. 
+    \subref{skillModels_loyaltyTeamOriented_imageEmpirical} Faithfulness interaction between loyalty and team-oriented behaviour. The role of experience was isolated by taking players skill at their 100th game played.
+    }
+    \label{faithfulness}
+\end{figure}
+\begin{equation}
+\text{skill} \approx \beta_0 + \beta_1 \, \text{loyalty} + \beta_2 \, \text{TOB} + \beta_3 \, \text{faithfulness} 
+\end{equation}
+
+
+\setlength{\columnsep}{10pt}
+\begin{multicols}{2}
+
+\begin{table}[H]
+\vspace{-0.8cm}
+\centering
+\begin{tabular}{rrrr}
+
+ & Estimate & Std. Error & Pr($>|t|$) \\ 
+  \hline 
+  Intercept & 28.57 & 0.040 & $p< 2e^{-16}$ \\ 
+  Loyalty & 0.76 & 0.097  & $p< 2e^{-14}$ \\ 
+  Team-oriented & -1.00 & 0.109 & $p< 2e^{-16}$ \\ 
+  Faithfulness & 3.71 & 0.261 & $p< 2e^{-16}$ \\ 
+   \hline
+\end{tabular}
+\caption{Linear model at 100th game played (Fig.~\ref{skillModels_loyaltyTeamOriented_imageEmpirical})}
+\label{model}
+\end{table}
+
+\columnbreak
+
+\emph{Faithfulness-boost} slope remains significant until 400 games played, when TOB slope reverses its contribution to a significant positive one.
+Loyalty is positive and significant at any level of experience.
+
+\end{multicols}
+
+\vspace{0.5cm}
+\begin{mdframed}[backgroundcolor=gray!15] 
+\Large \centering 
+\vspace{0.5cm}
+
+Cultural systems are natural information processing platforms, their computational properties have been \textbf{overlooked up to now}
+% 
+% 
+% We believe that the that emerges in human communities has computational properties that have been overlooked up to now in artificial intelligence field~\cite{gershman2015-
+% 
+\vspace{0.5cm}
+\end{mdframed}
+
+\vspace{-1cm}
+\section*{Methods}
+
+\emph{TrueSkill}~\cite{herbrich2006-trueskill} assumes hidden player performance as $N(p_i;s_i , \beta)$, centred at their skill $s_i$ with constant noise $\beta$.
+The game outcome $\bm{o}$ is considered as the true ordering of hidden teams performances, $t_e = \sum_{i\in A_e} p_i$.
+A prior belief distribution is used $N(s_i; \widehat{\mu}_i,\widehat{\sigma}_i^2)$.
+With $A$ the partition of players and $\bm{o}$ the ordered team index vector, the probability of an outcome (disregarding draws) is $P(\bm{o} \, | \, \bm{t}) = P(t_{\bm{o}_1} > \dots > t_{\bm{o}_{|A|}})$.
+
+\begin{equation}
+  P(\bm{s} \, | \, \bm{o}, A) =  \frac{P(\bm{o} \, | \, \bm{s}, A)  P(\bm{s})}{ P(\bm{o} \, | \, A)} = \int \dots \int P(\bm{s},\bm{p},\bm{t} \, | \, \bm{o}, A) \, d\bm{p}\, d\bm{t}
+\end{equation}
+
+\begin{figure}[H]
+  \centering
+  \scalebox{1}{\input{graph/trueskill_versionGeneral-en.tex}}
+  \caption{\small \emph{TrueSkill} acyclic Bayesian network model}
+  \label{modelo_trueskill}
+\end{figure}
+
+
+%----------------------------------------------------------------------------------------
+%	CONCLUSIONS
+%----------------------------------------------------------------------------------------
+
+\vspace{-1cm}
+\section*{Discussion}
+
+%We found a \emph{``faithfulness-boost effect''} that provides a skill boost during the first games of experience that would be acquired only after thousands of games played.
+%We propose that the tendency to play team games as well as to play with an stable partner are both indirectly measuring the bond strength that individuals have with her community.
+Our hypothesis suggests that sociability is the key underlying learning factor, which fits into the cultural niche hypothesis.
+Cultural evolution process can emerge only if individuals are able to fluidly exchange information with the social system.
+%Therefore, the ``sociability technologies''~\cite{segato2016-guerraContraLasMujeres} becomes an essential resource that needs to be exploited and properly studied. 
+We believe that the natural information processing system that emerges in human communities has computational properties that have been overlooked up to now in artificial intelligence field~\cite{gershman2015-computationalRationality}.
+
+{ \footnotesize
+%\nocite{*} % Print all references regardless of whether they were cited in the poster or not
+\bibliographystyle{./biblio/plos2015} % Plain referencing style
+\bibliography{./biblio/biblio.bib} % Use the example bibliography file sample.bib
+}
+
+\end{multicols}
+\end{document}
